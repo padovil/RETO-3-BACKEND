@@ -50,12 +50,12 @@ public class MessageService {
                     
                 }
 
-                // if(Message.getIdClient()!=null){
-                //     g.get().setIdClient(Message.getIdClient());
+                // if(Message.getClient()!=null){
+                //     g.get().setClient(Message.getClient());
                 // }
 
-                // if(Message.getIdCostume() !=null){
-                //     g.get().setIdCostume(Message.getIdCostume());
+                // if(Message.getCostume() !=null){
+                //     g.get().setCostume(Message.getCostume());
                 // }
 
                 return messageRepository.save(g.get());

@@ -31,7 +31,7 @@ public class Reservation implements Serializable{
     private Date startDate;
     private Date devolutionDate;
 
-    private String status="created";
+    private String status;
    
 
     @ManyToOne

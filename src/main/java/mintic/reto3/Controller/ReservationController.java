@@ -20,6 +20,8 @@ import java.util.Optional;
 
 import mintic.reto3.Service.ReservationService;
 import mintic.reto3.Model.Reservation;
+import mintic.reto3.Reports.CountClient;
+import mintic.reto3.Reports.ReservationStatus;
 
 
 @RestController
@@ -59,5 +61,21 @@ public class ReservationController {
     public String deleteReservation(@PathVariable("id") int id){
         reservationService.deleteReservation(id);
         return "redirect:/";
+    }
+
+
+    @GetMapping("/report-status")
+    public ReservationStatus getReservationsStatusReport(){
+        return reservationService.getReservationStatusReport();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationReportDate(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationPeriod(dateOne,dateTwo);
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClient> getClients(){
+        return reservationService.getTopClients();
     }
 }

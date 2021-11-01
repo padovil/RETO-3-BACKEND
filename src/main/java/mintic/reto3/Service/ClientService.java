@@ -45,9 +45,9 @@ public class ClientService {
             Optional<Client>g=clientRepository.getClient(Client.getIdClient());
 
             // if(!g.isEmpty()){
-                if(Client.getEmail()!=null){
-                    g.get().setEmail(Client.getEmail());                    
-                }
+                // if(Client.getEmail()!=null){
+                //     g.get().setEmail(Client.getEmail());                    
+                // }
 
                 if(Client.getPassword()!=null){
                     g.get().setPassword(Client.getPassword());

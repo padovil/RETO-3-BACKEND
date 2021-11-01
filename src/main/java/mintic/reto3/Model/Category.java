@@ -20,6 +20,7 @@ public class Category implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(length = 45)
     private String name;
     private String description;
     

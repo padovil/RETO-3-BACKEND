@@ -55,8 +55,8 @@ public class CostumeService {
                 }
 
                 
-                // if(costume.getCategory().getId() !=null){
-                //     g.get().setCategory(costume.getCategory().getId());                
+                // if(costume.getCategory() !=null){
+                //     g.get().setCategory(costume.getCategory());                
                 // }
 
                 if(costume.getName() !=null){

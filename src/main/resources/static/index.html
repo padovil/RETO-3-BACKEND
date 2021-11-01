@@ -1,16 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RETO 2 CICLO 3</title>
+  <title>Costume Store</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
 
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Demo</title>
+  <meta name="viewport" content="width=device-width" />
+  <base href="/" />
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
- <h1>hola</h1>
+
+  <div class="container unauthenticated">
+    <br>
+    <h1>Regístrate para poder acceder al contenido</h1> <br><br><br>
+    <h5 style="color:blue;  text-align: center;">Ingresa con GitHub:  </h5> <a  href="/oauth2/authorization/github"> <img src="https://img.icons8.com/color/48/000000/github-2.png" style=" display:block; margin:auto; width: 7%; height: 7%;"  /></a>
+  </div>
+
+
+  <div class="container authenticated" style="display:none">
+    Logged in as: <span id="user"></span>
+
+    <header id="cabeceralogo">
+      <div>
+        <h1>COSTUME STORE </h1>
+      </div>
+    </header>
+
+    <nav id="menuprincipal">
+      <div>
+        <ul>
+          <li><a href="index.html">Principal</a></li>
+          <li><a href="Reportes.html">Reportes</a></li>
+          <li><a href="Categorias.html">Categorias</a></li>
+          <li><a href="Clientes.html">Clientes</a></li>
+          <li><a href="Mensajes.html">Mensajes</a></li>
+          <li><a href="Reservaciones.html">Reservaciones</a></li>
+          <li><a href="Skate.html">Skate</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
 </body>
+
+<script type="text/javascript">
+  $.get("/user", function (data) {
+    $("#user").html(data.name);
+    $(".unauthenticated").hide()
+    $(".authenticated").show()
+  });
+</script>
 
 </html>
