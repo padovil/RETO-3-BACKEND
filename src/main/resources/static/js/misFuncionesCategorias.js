@@ -3,7 +3,7 @@ var flagName = 0, flagDescription = 0;
 function traerInformacionCategorias() {
     console.log("test");
     $.ajax({
-        url: "http://168.138.247.22:80/api/Category/all",
+        url: "http://129.151.114.57:8080/api/Category/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -50,7 +50,7 @@ function guardarInformacionCategorias() {
             dataType: 'JSON',
             data: JSON.stringify(var2),
 
-            url: "http://168.138.247.22:80/api/Category/save",
+            url: "http://129.151.114.57:8080/api/Category/save",
 
 
             success: function (response) {
@@ -93,7 +93,7 @@ function actualizarInformacionCategorias(idElemento) {
         console.log(myData);
         let dataToSend = JSON.stringify(myData);
         $.ajax({
-            url: "http://168.138.247.22:80/api/Category/update",
+            url: "http://129.151.114.57:8080/api/Category/update",
             type: "PUT",
             data: dataToSend,
             contentType: "application/JSON",
@@ -117,7 +117,7 @@ function borrarCategoria(idElemento) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "http://168.138.247.22:80/api/Category/" + idElemento,
+        url: "http://129.151.114.57:8080/api/Category/" + idElemento,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
