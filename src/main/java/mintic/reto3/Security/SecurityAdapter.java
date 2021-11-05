@@ -19,7 +19,6 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
         ).oauth2Login().defaultSuccessUrl("/", true);
 
         http.cors().and().csrf().disable();
-
     }
 
 }

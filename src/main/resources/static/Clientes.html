@@ -2,23 +2,31 @@
 <html lang="es">
 
 <head>
-  <title>Front Final</title>
+  <title>Clients</title>
   <meta charset="utf-8" />
   <meta name="description" content="Este es un documento HTML5" />
   <meta name="keywords" content="HTML, CSS, JavaScript" />
   <link rel="stylesheet" type="text/css" href="css\style.css">
   <script type="text/javascript" src="js/misFuncionesClientes.js"></script>
+
+  <link rel="stylesheet" href="css/boostrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-  <header id="cabeceralogo">
+  <header id="cabeceralogoR">
     <div>
-      <h1>Clientes</h1>
+      <!-- <h1>Clientes</h1> -->
     </div>
   </header>
-  <nav id="menuprincipal">
+  <nav id="menuprincipalR">
     <div>
       <ul>
         <li><a href="index.html">Principal</a></li>
@@ -27,7 +35,7 @@
         <li><a href="Clientes.html">Clientes</a></li>
         <li><a href="Mensajes.html">Mensajes</a></li>
         <li><a href="Reservaciones.html">Reservaciones</a></li>
-        <li><a href="Skate.html">Skate</a></li>
+        <li><a href="Costume.html">Costumes</a></li>
       </ul>
     </div>
   </nav>
@@ -36,8 +44,9 @@
   <script type="text/javascript">
     window.onload = autoInicioCliente();
   </script>
-  <div>
-    
+
+  <!-- <div>
+
     <label>EMAIL:</label>
     <input type="text" id="Clemail" placeholder="email" onblur="validadEmail()">
     <input id="alertEmail" class="alerts" readonly><br>
@@ -55,10 +64,152 @@
     <input id="alertAge" class="alerts" readonly><br>
 
   </div>
-  <button onclick="guardarInformacionCliente()">Guardar Cliente</button>
+  <button onclick="guardarInformacionCliente()">Guardar Cliente</button> -->
+
+
+  <div class="container">
+    <section>
+      <div class="row">
+        <!-- --------------------------------------- Inicio Tabla BIKE --------------------------------------->
+        <div class="client-form col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12" id="costume-form">
+          <br><br>
+          <h1 class="text-center" style="color: darkred;"><b>CLIENTS</b></h1>
+          <br><br>
+          <div class="row">
+
+            <div class="col-xs-3">
+              <button data-toggle='modal' data-target='#modalCostume_Crear' class="btn btn-primary"
+                style="background-color: #004a4d;">REGISTRAR CLIENTE</button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <br><br><br><br>
+
+
+          </div>
 
 
 
+          <div id="idDivConsultaC" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12"></div>
+
+          <br><br><br><br>
+          <!------------------------- Final Tabla BIKE --------------------------------->
+
+
+          <!------------------------- Inicio Formulario de agregar --------------------->
+          <!-- Modal create costume -->
+          <div class="modal fade" id="modalCostume_Crear" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CLIENTE</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+                    <div class="form-row">
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>NAME</label>
+                        <input type="text" class="form-control" id="name_crear_client" name="name_crear_costume"
+                          placeholder="Type name" onblur="validadName()">
+                        <small class="form-text text-muted">Digite el nombre del cliente</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>EMAIL</label>
+                        <input type="text" class="form-control" id="email_crear_client" name="brand_crear_costume"
+                          placeholder="Type email" onblur="validadEmail()">
+                        <small class="form-text text-muted">Digite el correo</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>PASWORD</label>
+                        <input type="password" class="form-control" id="password_crear_client" name="year_crear_costume"
+                          placeholder="type password" onblur="validadPassword()">
+                        <small class="form-text text-muted">Digite la contraseña</small>
+                      </div>
+
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>AGE</label>
+                        <input type="number" class="form-control" id="age_crear_client" name="description_crear_costume"
+                          placeholder="type age" onblur="validadAge()">
+                        <small class="form-text text-muted">Digite la edad</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="guardarInformacionCliente()" class="btn btn-success">Create
+                      Client</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FIN Modal create costume -->
+          <!------------------- final Formulario de agregar --------------------------------->
+
+
+          <!-------------------- inicio Formulario de Actualizar bike ---------------------------->
+          <!-- Modal update costume -->
+          <div class="modal fade" id="modalCostume_Update" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">UPDATE CLIENT</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
+                    <div class="form-row">
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>NAME</label>
+                        <input type="text" class="form-control" id="name_update_client" name="name_crear_costume"
+                          placeholder="Type name" onblur="validadName()">
+                        <small class="form-text text-muted">Digite el nombre del cliente</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>EMAIL</label>
+                        <input type="text" class="form-control" id="email_update_client" name="brand_crear_costume"
+                          placeholder="Type email" onblur="validadEmail()">
+                        <small class="form-text text-muted">Digite el correo</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>PASWORD</label>
+                        <input type="password" class="form-control" id="password_update_client"
+                          name="year_crear_costume" placeholder="type password" onblur="validadPassword()">
+                        <small class="form-text text-muted">Digite la contraseña</small>
+                      </div>
+
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>AGE</label>
+                        <input type="number" class="form-control" id="age_update_client"
+                          name="description_crear_costume" placeholder="type age" onblur="validadAge()">
+                        <small class="form-text text-muted">Digite la edad</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="actualizarInformacionCliente()" class="btn btn-success">Update
+                      Client</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FIN Modal update costume -->
+          <!--------------- final Formulario de Actualizar ---------------->
+        </div>
+
+        <!------------------------------------------------------------FINAL DE BIKE------------------------------------------------>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>

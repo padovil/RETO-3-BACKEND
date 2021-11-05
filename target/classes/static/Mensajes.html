@@ -2,22 +2,31 @@
 <html lang="es">
 
 <head>
-  <title>Front Final</title>
-  <meta charset="utf-8">
-  <meta name="description" content="Este es un documento HTML5">
-  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <title>Messages</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="Este es un documento HTML5" />
+  <meta name="keywords" content="HTML, CSS, JavaScript" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css\style.css">
+  <link rel="stylesheet" type="text/css" href="css\style.css" />
   <script type="text/javascript" src="js/misFuncionesMensajes.js"></script>
+
+  <link rel="stylesheet" href="css/boostrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <header id="cabeceralogo">
+  <header id="cabeceralogoR">
     <div>
-      <h1>Mensajes </h1>
+      <!-- <h1>Mensajes </h1> -->
     </div>
   </header>
-  <nav id="menuprincipal">
+  <nav id="menuprincipalR">
     <div>
       <ul>
         <li><a href="index.html">Principal</a></li>
@@ -26,34 +35,171 @@
         <li><a href="Clientes.html">Clientes</a></li>
         <li><a href="Mensajes.html">Mensajes</a></li>
         <li><a href="Reservaciones.html">Reservaciones</a></li>
-        <li><a href="Skate.html">Skates</a></li>
+        <li><a href="Costume.html">Costumes</a></li>
       </ul>
     </div>
   </nav>
 
-  <div id="resultadoMensajes"></div>
+  
 
   <script type="text/javascript">
     window.onload = autoInicioMensajes();
   </script>
 
+  <!-- <label>MENSSAGE:</label>
+  <input type="text" id="messagetext" placeholder="mensaje" onblur="validadMessage()" />
+  <input id="alertMessage" class="alerts" readonly /><br /> -->
 
-
-  <label>MENSSAGE:</label>
-  <input type="text" id="messagetext" placeholder="mensaje"  onblur="validadMessage()">
-  <input id="alertMessage" class="alerts" readonly><br>
-
-  <select id="select-client"></select>
+  <!-- <select id="select-client"></select> -->
   <script type="text/javascript">
     window.onload = autoInicioRelacionCliente();
   </script>
 
-  <select id="select-skate"></select>
+  <!-- <select id="select-costume"></select> -->
   <script type="text/javascript">
-    window.onload = autoInicioSkate();
+    window.onload = autoInicioCostume();
   </script>
 
-  <button onclick="guardarInformacionMensajes()">Guardar Mensajes</button>
+  <!-- <button onclick="guardarInformacionMensajes()">Guardar Mensajes</button> -->
+
+ 
+
+  <div class="container">
+    <section>
+      <div class="row">
+        <!-- --------------------------------------- Inicio Tabla BIKE --------------------------------------->
+        <div class="costume-form col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="costume-form">
+          <br /><br />
+          <h1 class="text-center" style="color: darkred"><b>MESSAGES</b></h1>
+          <br /><br />
+          <div class="row">
+            <div class="col-xs-3">
+              <button data-toggle="modal" data-target="#modalCostume_Crear" class="btn btn-primary"
+                style="background-color: #004a4d">
+                REGISTRAR MENSAJE
+              </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <br /><br /><br /><br />
+          </div>
+
+          <!------------------------- Final Tabla BIKE --------------------------------->
+
+          <!------------------------- Inicio Formulario de agregar --------------------->
+          <!-- Modal create costume -->
+          <div class="modal fade" id="modalCostume_Crear" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    REGISTRAR MENSAJE
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="form" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="form-row">
+                      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label>MESSAGE</label>
+                        <input type="text" class="form-control" id="message_crear" name="name_crear_costume"
+                          placeholder="Type message" />
+                        <small class="form-text text-muted">Digite el mensaje</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>CLIENT:</label>
+                        <select id="select-client-2" class="form-control"></select>
+                        <small class="form-text text-muted">Escoge el cliente</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>COSTUME:</label>
+                        <select id="select-costume-2" class="form-control"></select>
+                        <small class="form-text text-muted">Escoge el disfraz</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                      Close
+                    </button>
+                    <button type="button" onclick="guardarInformacionMensajes()" class="btn btn-success">
+                      Create Message
+                    </button>
+
+                   
+                  </div>
+                  
+                </div>
+                  
+              </div>
+            </div>
+        
+          </div>
+          <!-- FIN Modal create costume -->
+          <!------------------- final Formulario de agregar --------------------------------->
+          
+           
+          <div id="resultadoMensajes" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12"></div>
+
+
+          <!-------------------- inicio Formulario de Actualizar bike ---------------------------->
+          <!-- Modal update costume -->
+          <div class="modal fade" id="modalCostume_Update" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    UPDATE MESSAGE
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="form" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="form-row">
+                      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label>MESSAGE</label>
+                        <input type="text" class="form-control" id="message_update" name="name_crear_costume"
+                          placeholder="Type message" />
+                        <small class="form-text text-muted">Digite el mensaje</small>
+                      </div>
+                      <!-- <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>CLIENT:</label>
+                        <select id="select-client-A" class="form-control"></select>
+                        <small class="form-text text-muted">Escoge el cliente</small>
+                      </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                        <label>COSTUME:</label>
+                        <select id="select-costume-A" class="form-control"></select>
+                        <small class="form-text text-muted">Escoge el disfraz</small>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                      Close
+                    </button>
+                    <button type="button" onclick="actualizarInformacionMensaje()" class="btn btn-success">
+                      Update Message
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FIN Modal update costume -->
+          <!--------------- final Formulario de Actualizar ---------------->
+        </div>
+
+        <!------------------------------------------------------------FINAL DE BIKE------------------------------------------------>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>

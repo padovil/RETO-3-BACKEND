@@ -1,4 +1,4 @@
-
+var idUpdate;
 var flagMessage = 0;
 
 function autoInicioRelacionCliente() {
@@ -9,25 +9,30 @@ function autoInicioRelacionCliente() {
         datatype: "JSON",
         success: function (respuesta) {
 
-            let $select = $("#select-client");
+            let $select = $("#select-client-2");
+            let $selectA = $("#select-client-A");
             $.each(respuesta, function (id, name) {
                 $select.append('<option value=' + name.idClient + '>' + name.name + '</option>');
+                $selectA.append('<option value=' + name.idClient + '>' + name.name + '</option>');
             });
         }
 
     })
 }
-function autoInicioSkate() {
+
+function autoInicioCostume() {
 
     $.ajax({
-        url: "http://129.151.114.57:8080/api/Skate/all",
+        url: "http://129.151.114.57:8080/api/Costume/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
 
-            let $select = $("#select-skate");
+            let $select = $("#select-costume-2");
+            let $selectA = $("#select-costume-A");
             $.each(respuesta, function (id, name) {
                 $select.append('<option value=' + name.id + '>' + name.name + '</option>');
+                $selectA.append('<option value=' + name.id + '>' + name.name + '</option>');
 
             });
         }
@@ -50,39 +55,82 @@ function autoInicioMensajes() {
 
 }
 
+function consultarMessageid(idElemento) {
+    var id = idElemento;
+    $.ajax(
+        {
+            url: 'http://129.151.114.57:8080/api/Message/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (json) {
+
+                // var category    =   json.category.name;    
+                var idMessage = json.idMessage;
+                idUpdate = idMessage;
+                var messageText = json.messageText;
+                
+                $("#message_update").val(messageText);
+                console.log(json)
+            },
+            error: function (xhr, status) {
+                alert('Operacion no satisfactoria,' + xhr.status);
+            },
+        }
+    );
+}
+
 function pintarRespuestaMensajes(respuesta) {
 
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
+    $("#resultadoMensajes").empty();
 
-        myTable += "<td>" + respuesta[i].messageText + "</td>";
-        myTable += "<td>" + respuesta[i].skate.name + "</td>";
-        myTable += "<td>" + respuesta[i].client.name + "</td>";
-        myTable += "<td> <button onclick=' actualizarInformacionMensaje(" + respuesta[i].idMessage + ")'>Actualizar</button>";
-        myTable += "<td> <button onclick='borrarMensaje(" + respuesta[i].idMessage + ")'>Borrar</button>";
-        myTable += "</tr>";
+    let myTable = "<table class='table table-hover'><thead>";
+    // myTable += "<tr><th scope='col'>ID</th>";
+    myTable += "<th scope='col'>MESSAGE</th>";
+    myTable += "<th scope='col'>CLIENT</th>";
+    myTable += "<th scope='col'>COSTUME</th>";
+    
+    myTable += "<th scope='col'>DETALLE</th>";
+    myTable += "<th scope='col'>DELETE</th>";
+    myTable += "</tr></thead>";
+    if (respuesta.length < 1) {
+        myTable += "<tbody><tr>";
+        myTable += "<td scope='row'>" + "NO HAY ELEMENTOS" + "</td>";
     }
+    else {
+        for (i = 0; i < respuesta.length; i++) {
+
+            myTable += "<tbody><tr>";
+            // myTable += "<td scope='row'>" + respuesta[i].id + "</td>";
+            myTable += "<td>" + respuesta[i].messageText + "</td>";
+            myTable += "<td>" + respuesta[i].client.name + "</td>";
+            myTable += "<td>" + respuesta[i].costume.name + "</td>";
+
+            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarMessageid(" + respuesta[i].idMessage + ")'> Detalle</button></td>";
+            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarMensaje(" + respuesta[i].idMessage + ")'>Delete</button></td>";
+            myTable += "</tr></tbody>";
+        }
+    }
+
     myTable += "</table>";
     $("#resultadoMensajes").html(myTable);
 }
 
 function guardarInformacionMensajes() {
-    if ($("#messagetext").val().length == 0) {
+    // if ($("#message_crear").val().length == 0) {
 
-        alert("Todos los campos son obligatorios");
-    }
-    else if (!flagMessage) {
-        alert("Verifica los campos");
-    }
-    else {
+    //     alert("Todos los campos son obligatorios");
+    // }
+    // else if (!flagMessage) {
+    //     alert("Verifica los campos");
+    // }
+    // else {
 
 
         let var2 = {
 
-            messageText: $("#messagetext").val(),
-            skate: { id: +$("#select-skate").val() },
-            client: { idClient: +$("#select-client").val() },
+            messageText: $("#message_crear").val(),
+            costume: { id: +$("#select-costume-2").val() },
+            client: { idClient: +$("#select-client-2").val() },
 
 
         };
@@ -90,7 +138,7 @@ function guardarInformacionMensajes() {
         console.log(var2);
         $.ajax({
             type: 'POST',
-            contentType: "application/json; charset=utf-8",
+            contentType: "application/json",
             dataType: 'JSON',
             data: JSON.stringify(var2),
 
@@ -112,25 +160,31 @@ function guardarInformacionMensajes() {
 
             }
         });
-    }
+    // }
 }
 
-function actualizarInformacionMensaje(idElemento) {
-    if ($("#messagetext").val().length == 0) {
+function actualizarInformacionMensaje() {
+    // if ($("#messagetext").val().length == 0) {
 
-        alert("Todos los campos son obligatorios");
-    }
-    else if (!flagMessage) {
-        alert("Verifica los campos");
-    }
-    else {
+    //     alert("Todos los campos son obligatorios");
+    // }
+    // else if (!flagMessage) {
+    //     alert("Verifica los campos");
+    // }
+    // else {
 
-        let myData = {
-            idMessage: idElemento,
-            messageText: $("#messagetext").val(),
-            skate: { id: +$("#select-skate").val() },
-            client: { idClient: +$("#select-client").val() },
+        myData       = {
+            idMessage          :   idUpdate,
+            messageText :   $("#message_update").val(),
+            // Client      :   {idClient: +$("#select-client-A").val() },
+            // Costume     :   {id: +$("#select-costume-A").val() },
+
+          
+            
+            
         };
+
+  
         console.log(myData);
         let dataToSend = JSON.stringify(myData);
         $.ajax({
@@ -147,28 +201,36 @@ function actualizarInformacionMensaje(idElemento) {
                 alert("se ha Actualizado correctamente el Mensaje")
             }
         });
-    }
+    // }
 }
 
 function borrarMensaje(idElemento) {
-    let myData = {
-        idMessage: idElemento
-    };
-    let dataToSend = JSON.stringify(myData);
-    console.log(dataToSend);
-    $.ajax({
-        url: "http://129.151.114.57:8080/api/Message/" + idElemento,
-        type: "DELETE",
-        data: dataToSend,
-        contentType: "application/JSON",
-        datatype: "JSON",
-        success: function (respuesta) {
-            $("#resultado").empty();
-            autoInicioMensajes();
-            alert("Se ha Eliminado.")
-        }
-    });
+    var elemento = {
+        id: idElemento
+    }
 
+    var dataToSend = JSON.stringify(elemento);
+
+    $.ajax(
+        {
+            dataType: 'json',
+            data: dataToSend,
+            url: "http://129.151.114.57:8080/api/Message/" + idElemento,
+            //url: "http://localhost:8080/api/Skate/" + idElemento,
+            type: 'DELETE',
+            contentType: "application/JSON",
+            success: function (response) {
+                console.log(response);
+                // $("#miListaSkate").empty();
+                autoInicioMensajes();
+                alert("se ha Eliminado Correctamente!")
+                location.reload(true);
+            },
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("No se Elimino Correctamente!")
+            }
+        });
 }
 
 

@@ -2,13 +2,12 @@
 <html lang="es">
 
 <head>
-  <title>Clients</title>
+  <title>Costumes</title>
   <meta charset="utf-8" />
   <meta name="description" content="Este es un documento HTML5" />
   <meta name="keywords" content="HTML, CSS, JavaScript" />
   <link rel="stylesheet" type="text/css" href="css\style.css">
-  <script type="text/javascript" src="js/misFuncionesClientes.js"></script>
-
+  <script type="text/javascript" src="js/misFuncionesCostume.js"></script>
   <link rel="stylesheet" href="css/boostrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -23,7 +22,7 @@
 <body>
   <header id="cabeceralogoR">
     <div>
-      <!-- <h1>Clientes</h1> -->
+      <!-- <h1>Skate</h1> -->
     </div>
   </header>
   <nav id="menuprincipalR">
@@ -40,57 +39,61 @@
     </div>
   </nav>
 
-  <div id="resultado3"></div>
   <script type="text/javascript">
-    window.onload = autoInicioCliente();
+    window.onload = autoInicioCostume();
   </script>
 
-  <!-- <div>
+  <script type="text/javascript">
+    window.onload = autoInicioCategoria();
+  </script>
 
-    <label>EMAIL:</label>
-    <input type="text" id="Clemail" placeholder="email" onblur="validadEmail()">
-    <input id="alertEmail" class="alerts" readonly><br>
+  <!-- <label>NAME:</label>
+  <input class="controlSkate" type="text" id="name2" placeholder="nombre " onblur="validadName()">
+  <input id="alertName" class="alerts" readonly><br>
 
-    <label>PASSWORD:</label>
-    <input type="password" id="Clpassword" placeholder="password" onblur="validadPassword()">
-    <input id="alertPassword" class="alerts" readonly><br>
+  <label>MODEL:</label>
+  <input class="controlSkate" type="text" id="brand" placeholder="marca " onblur="validadBrand()">
+  <input id="alertBrand" class="alerts" readonly><br>
 
-    <label>NAME:</label>
-    <input type="text" id="Clname" placeholder="nombre" onblur="validadName()">
-    <input id="alertNameCl" class="alerts" readonly><br>
+  <label>YEAR:</label>
+  <input class="controlSkate" type="number" id="year" placeholder="año " onblur="validadYear()">
+  <input id="alertYear" class="alerts" readonly><br>
 
-    <label>AGE:</label>
-    <input type="number" id="Clage" placeholder="edad" onblur="validadAge()">
-    <input id="alertAge" class="alerts" readonly><br>
+  <label>DESCRIPTION:</label>
+  <input class="controlSkate" type="text" id="description2" placeholder="descripcion" onblur="validarDescription()">
+  <input id="alertDescription" class="alerts" readonly><br> -->
 
-  </div>
-  <button onclick="guardarInformacionCliente()">Guardar Cliente</button> -->
 
+
+  <!-- 
+  <div id="miListaSkate"></div>
+  
+  <button onclick="agregarSkate()"> Guardar Skate</button> -->
 
   <div class="container">
     <section>
       <div class="row">
         <!-- --------------------------------------- Inicio Tabla BIKE --------------------------------------->
-        <div class="client-form col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12" id="costume-form">
+        <div class="costume-form col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12" id="costume-form">
           <br><br>
-          <h1 class="text-center" style="color: darkred;"><b>CLIENTS</b></h1>
+          <h1 class="text-center" style="color: darkred;"><b>COSTUMES</b></h1>
           <br><br>
           <div class="row">
 
             <div class="col-xs-3">
-              <button data-toggle='modal' data-target='#modalCostume_Crear' class="btn btn-primary"
-                style="background-color: #004a4d;">REGISTRAR CLIENTE</button>
+              <button data-toggle='modal' data-target='#modalCostume_Crear' class="btn btn-primary" style="background-color: #004a4d;">CREAR
+                DISFRAZ</button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
 
-            <br><br><br><br>
+           <br><br><br><br>
 
 
           </div>
 
 
 
-          <div id="idDivConsultaC" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12"></div>
+          <div id="idDivConsulta" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12"></div>
 
           <br><br><br><br>
           <!------------------------- Final Tabla BIKE --------------------------------->
@@ -103,7 +106,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CLIENTE</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">CREAR DISFRAZ</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -111,37 +114,42 @@
                 <div class="modal-body">
                   <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
                     <div class="form-row">
-                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
                         <label>NAME</label>
-                        <input type="text" class="form-control" id="name_crear_client" name="name_crear_costume"
-                          placeholder="Type name" onblur="validadName()">
-                        <small class="form-text text-muted">Digite el nombre del cliente</small>
+                        <input type="text" class="form-control" id="name_crear_costume" name="name_crear_costume"
+                          placeholder="Type name">
+                        <small class="form-text text-muted">Digite el nombre del disfraz</small>
                       </div>
                       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
-                        <label>EMAIL</label>
-                        <input type="text" class="form-control" id="email_crear_client" name="brand_crear_costume"
-                          placeholder="Type email" onblur="validadEmail()">
-                        <small class="form-text text-muted">Digite el correo</small>
+                        <label>BRAND</label>
+                        <input type="text" class="form-control" id="brand_crear_costume" name="brand_crear_costume"
+                          placeholder="Type brand">
+                        <small class="form-text text-muted">Digite la marca del disfraz</small>
                       </div>
                       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
-                        <label>PASWORD</label>
-                        <input type="password" class="form-control" id="password_crear_client" name="year_crear_costume"
-                          placeholder="type password" onblur="validadPassword()">
-                        <small class="form-text text-muted">Digite la contraseña</small>
+                        <label>YEAR</label>
+                        <input type="number" class="form-control" id="year_crear_costume" name="year_crear_costume"
+                          placeholder="Enter year">
+                        <small class="form-text text-muted">Digite el año del disfraz</small>
                       </div>
+                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
 
+                        <label>CATEGORIA:</label>
+                        <select id="select-category" class="form-control"></select>
+                        <small class="form-text text-muted">Escoge la categoria del disfraz</small>
+                      </div>
                       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
-                        <label>AGE</label>
-                        <input type="number" class="form-control" id="age_crear_client" name="description_crear_costume"
-                          placeholder="type age" onblur="validadAge()">
-                        <small class="form-text text-muted">Digite la edad</small>
+
+                        <label>DESCRIPTION</label>
+                        <input type="text" class="form-control" id="description_crear_costume"
+                          name="description_crear_costume" placeholder="Enter description">
+                        <small class="form-text text-muted">Digite la descripcion del disfraz</small>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="guardarInformacionCliente()" class="btn btn-success">Create
-                      Client</button>
+                    <button type="button" onclick="agregarElementos()" class="btn btn-success">Create Costume</button>
                   </div>
                 </div>
               </div>
@@ -158,7 +166,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">UPDATE CLIENT</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">UPDATE COSTUME</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -166,37 +174,41 @@
                 <div class="modal-body">
                   <div id="form" class="col-12 col-sm-12	col-md-12 col-lg-12	col-xl-12">
                     <div class="form-row">
-                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
                         <label>NAME</label>
-                        <input type="text" class="form-control" id="name_update_client" name="name_crear_costume"
-                          placeholder="Type name" onblur="validadName()">
-                        <small class="form-text text-muted">Digite el nombre del cliente</small>
+                        <input type="text" class="form-control" id="name_update_costume" name="name_update_costume"
+                          placeholder="Type name">
+                        <small class="form-text text-muted">Digite el nombre del disfraz</small>
                       </div>
                       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
-                        <label>EMAIL</label>
-                        <input type="text" class="form-control" id="email_update_client" name="brand_crear_costume"
-                          placeholder="Type email" onblur="validadEmail()">
-                        <small class="form-text text-muted">Digite el correo</small>
+                        <label>BRAND</label>
+                        <input type="text" class="form-control" id="brand_update_costume" name="brand_update_costume"
+                          placeholder="Type brand">
+                        <small class="form-text text-muted">Digite la marca del disfraz</small>
                       </div>
                       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
-                        <label>PASWORD</label>
-                        <input type="password" class="form-control" id="password_update_client"
-                          name="year_crear_costume" placeholder="type password" onblur="validadPassword()">
-                        <small class="form-text text-muted">Digite la contraseña</small>
+                        <label>YEAR</label>
+                        <input type="number" class="form-control" id="year_update_costume" name="year_update_costume"
+                          placeholder="Enter year">
+                        <small class="form-text text-muted">Digite el año del disfraz</small>
                       </div>
+                      <!-- <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
 
-                      <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
-                        <label>AGE</label>
-                        <input type="number" class="form-control" id="age_update_client"
-                          name="description_crear_costume" placeholder="type age" onblur="validadAge()">
-                        <small class="form-text text-muted">Digite la edad</small>
+                        <label>CATEGORIA:</label>
+                        <select id="select-category-1" class="form-control"></select>
+                        <small class="form-text text-muted">Escoge la categoria del disfraz</small>
+                      </div> -->
+                      <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12	col-xl-12">
+                        <label>DESCRIPTION</label>
+                        <input type="text" class="form-control" id="description_update_costume"
+                          name="description_update_costume" placeholder="Enter description">
+                        <small class="form-text text-muted">Digite la descripcion del disfraz</small>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="actualizarInformacionCliente()" class="btn btn-success">Update
-                      Client</button>
+                    <button type="button" onclick="actualizar()" class="btn btn-success">Update Costume</button>
                   </div>
                 </div>
               </div>
