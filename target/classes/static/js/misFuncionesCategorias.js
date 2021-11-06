@@ -1,5 +1,9 @@
-var flagName = 0, flagDescription = 0;
+var nameA=0,descriptionA=0;
+var nameC=0,descriptionC=0;
 var idUpdate;
+
+var emerge6 = null;
+
 
 function traerInformacionCategorias() {
     console.log("test");
@@ -38,8 +42,8 @@ function pintarRespuesta(respuesta) {
             myTable += "<td>" + respuesta[i].description + "</td>";
 
 
-            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarCategoryid(" + respuesta[i].id + ")'> Detalle</button></td>";
-            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarCategoria(" + respuesta[i].id + ")'>Delete</button></td>";
+            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarCategoryid(" + respuesta[i].id + ")'> <img src='https://image.flaticon.com/icons/png/512/104/104668.png' width='20' height='20'> </button></td>";
+            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarCategoria(" + respuesta[i].id + ")'><img src='https://cdn.icon-icons.com/icons2/868/PNG/128/trash_bin_icon-icons.com_67981.png' width='20' height='20'></button></td>";
             myTable += "</tr></tbody>";
         }
     }
@@ -49,15 +53,11 @@ function pintarRespuesta(respuesta) {
 }
 
 function guardarInformacionCategorias() {
-
-    // if ($("#Cname").val().length == 0 || $("#Cdescription").val().length == 0) {
-
-    //     alert("Todos los campos son obligatorios");
-    // }
-    // else if (!flagName || !flagDescription) {
-    //     alert("Verifique los campos")
-    // }
-    // else {
+    
+    if( !nameC || !descriptionC){
+       alert("Verifique los campos")
+   }
+   else{
 
         let var2 = {
             name: $("#name_category_crear").val(),
@@ -88,20 +88,16 @@ function guardarInformacionCategorias() {
 
             }
         });
-    // }
+    }
 
 }
 
 function actualizarInformacionCategorias() {
 
-    // if ($("#Cname").val().length == 0 || $("#Cdescription").val().length == 0) {
-
-    //     alert("Todos los campos son obligatorios");
-    // }
-    // else if (!flagName || !flagDescription) {
-    //     alert("Verifique los campos")
-    // }
-    // else {
+    if( !nameA || !descriptionA){
+        alert("Verifique los campos")
+    }
+    else {
 
 
         let myData = {
@@ -124,9 +120,10 @@ function actualizarInformacionCategorias() {
                 $("#name_UD_costume").val("");
                 traerInformacionCategorias();
                 alert("se ha Actualizado correctamente la categoria")
+                window.location.reload()
             }
         });
-    // }
+    }
 
 }
 
@@ -176,28 +173,113 @@ function borrarCategoria(idElemento) {
 
 }
 
-function validadName() {
-    var name = $("#Cname").val();
+function validadNameCrear() {
+    var name = $("#name_category_crear").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("name_category_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
 
-    if (name.length <= 45) {
-        flagName = 1;
-        $("#alertYearC").val("");
+        nameC = 0;
+    }
+    else if (name.length <= 45) {
+        nameC = 1;
+        var elem = document.getElementById("name_category_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
     } else {
-        $("#alertYearC").val("Has superado el limite de caracteres");
+        var elem = document.getElementById("name_category_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
 
-        flagName = 0;
+        nameC = 0;
+    }
+}
+
+function validadNameActualizar() {
+    var name = $("#name_UD_costume").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("name_UD_costume");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        nameA = 0;
+    }
+    else if (name.length <= 45) {
+        nameA = 1;
+        var elem = document.getElementById("name_UD_costume");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("name_UD_costume");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        nameA = 0;
     }
 }
 
 
-function validadDescription() {
-    var description = $("#Cdescription").val();
-
-    if (description.length <= 250) {
-        flagDescription = 1;
-        $("#alertDescriptionC").val("");
+function validadDescriptionCrear() {
+    var name = $("#des_category_crear").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("des_category_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+{/* <abbr title="TEXTO EMERGENTE QUE SE MOSTRARÁ AL PASAR EL CURSOR">Texto a explicar</abbr> */}
+        descriptionC = 0;
+    }
+    else if (name.length <= 250) {
+        descriptionC = 1;
+        var elem = document.getElementById("des_category_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
     } else {
-        $("#alertDescriptionC").val("Has superado el limite de caracteres");
-        flagDescription = 0;
+        var elem = document.getElementById("des_category_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        descriptionC = 0;
     }
 }
+
+function validadDescriptionActualizar() {
+    var name = $("#DES_UD_costume").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("DES_UD_costume");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        descriptionA = 0;
+    }
+    else if (name.length <= 250) {
+        descriptionA = 1;
+        var elem = document.getElementById("DES_UD_costume");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("DES_UD_costume");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        descriptionA = 0;
+    }
+}
+
+

@@ -55,13 +55,16 @@ function autoInicioCostume(){
 //Manejador "POST"
 function agregarReservation() {
     
-    // if($("#startDate").val().length == 0 || $("#devolutionDate").val().length == 0 || $("#status").val().length == 0){
-    //     alert("Todos los campos son Obligatorios")
-    // }
-    // else if(!validarFecha()){
-    //     alert("Fecha de inicio debe ser menor a fecha final")
-    // }
-    // else{  
+    if($("#scoreC").val().length == 0 || $("#startDate").val().length == 0 || $("#devolutionDate").val().length == 0 || $("#status").val().length == 0){
+        alert("Todos los campos son Obligatorios")
+    }
+    else if(!validarFecha()){
+        alert("Fecha de inicio debe ser menor a fecha final")
+    }
+    else if(!validadScoreA()){
+        alert("Verifique los campos")
+    }
+    else{  
         let elemento = {
             startDate: $("#startDate").val(),
             devolutionDate: $("#devolutionDate").val(),
@@ -87,17 +90,18 @@ function agregarReservation() {
                 $("#resultado5").empty();
                 $("#startDate").val("");
                 $("#devolutionDate").val("");
-                $("#status").val("");
+                
 
                 //Listar Tabla
 
                 alert("Se ha guardado Correctamente!")
+                window.location.reload()
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert("No se guardo Correctamente!")
             }
         });
-    // }
+    }
 }
 
 function pintarRespuestaReservation(respuesta){
@@ -105,11 +109,12 @@ function pintarRespuestaReservation(respuesta){
     $("#idDivConsultaRes").empty();
     let myTable = "<table class='table table-hover'><thead>";
     // myTable += "<tr><th scope='col'>ID</th>";
-    myTable += "<th scope='col'>Start Date</th>";
-    myTable += "<th scope='col'>Devolution Date</th>";
+    myTable += "<th scope='col'>START DATE</th>";
+    myTable += "<th scope='col'>DEVOLUTION </th>";
     myTable += "<th scope='col'>STATUS</th>";
+    myTable += "<th scope='col'>SCORE</th>";
     myTable += "<th scope='col'>CLIENTE</th>";
-    // myTable += "<th scope='col'>COSTUME</th>";
+    myTable += "<th scope='col'>COSTUME</th>";
     myTable += "<th scope='col'>DETALLE</th>";
     myTable += "<th scope='col'>DELETE</th>";
     myTable += "</tr></thead>";
@@ -124,11 +129,12 @@ function pintarRespuestaReservation(respuesta){
             myTable += "<td>" + respuesta[i].startDate + "</td>";
             myTable += "<td>" + respuesta[i].devolutionDate + "</td>";
             myTable += "<td>" + respuesta[i].status + "</td>";
+            myTable += "<td>" + respuesta[i].score + "</td>";
             myTable += "<td>" + respuesta[i].client.name + "</td>";
-            // myTable += "<td>" + respuesta[i].costume.name + "</td>";
+            myTable += "<td>" + respuesta[i].costume.name + "</td>";
 
-            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarReservasid(" + respuesta[i].idReservation + ")'> Detalle</button></td>";
-            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarReservation(" + respuesta[i].idReservation + ")'>Delete</button></td>";
+            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarReservasid(" + respuesta[i].idReservation + ")'> <img src='https://image.flaticon.com/icons/png/512/104/104668.png' width='20' height='20'> </button></td>";
+            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarReservation(" + respuesta[i].idReservation + ")'><img src='https://cdn.icon-icons.com/icons2/868/PNG/128/trash_bin_icon-icons.com_67981.png' width='20' height='20'></button></td>";
             myTable += "</tr></tbody>";
         }
     }
@@ -185,7 +191,7 @@ function consultarReservasid(idElemento) {
                 
                 $("#startDateUpdate").val(startDate);
                 $("#devolutionDateUpdate").val(devolutionDate);
-                $("#statusUpdate").val(status);
+                // $("#statusUpdate").val(status);
                 
                 console.log(json)
             },
@@ -198,9 +204,16 @@ function consultarReservasid(idElemento) {
 //Manejador PUT
 function actualizarReservation() {
     
-    // if($("#startDate").val().length == 0 || $("#devolutionDate").val().length == 0 || $("#status").val().length == 0){
-    //     alert("Todos los campos deben estar llenos")
-    // }else{
+    if($("#scoreA").val().length == 0 || $("#startDate").val().length == 0 || $("#devolutionDate").val().length == 0 || $("#status").val().length == 0){
+        alert("Todos los campos son Obligatorios")
+    }
+    else if(!validarFecha()  ){
+        alert("Fecha de inicio debe ser menor a fecha final")
+    }
+    else if(!validadScoreCrear()){
+        alert("Verifique los campos")
+    }
+    else{  
         let elemento = {
             idReservation: idUpdate,
             startDate: $("#startDateUpdate").val(),
@@ -229,14 +242,15 @@ function actualizarReservation() {
 
                 $("#startDateUpdate").val("");
                 $("#devolutionDateUpdate").val("");
-                $("#statusUpdate").val("");
+                // $("#statusUpdate").val("");
+                window.location.reload()
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                alert("No se Actualizo Correctamente!")
+                alert("No se Actualizó Correctamente!")
             }
         });
-    // }
+    }
 }
 
 function validarFecha(){
@@ -249,8 +263,70 @@ function validarFecha(){
         
     }
     else{
-        
+        var elem1 = document.getElementById("devolutionDate");
+        var elem2 = document.getElementById("startDate");
+        elem1.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem1.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        elem2.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem2.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
         return 0;
+    }
+}
+
+
+function validadScoreCrear() {
+    var name = $("#scoreC").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("scoreC");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        return 0;
+    }
+    else if (name <= 5 && name>=0) {
         
+        var elem = document.getElementById("scoreC");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+        return 1;
+    } else {
+        var elem = document.getElementById("scoreC");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        return 0;
+    }
+}
+
+
+function validadScoreA() {
+    var name = $("#scoreA").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("scoreA");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        return 0;
+    }
+    else if (name <= 5 && name>=0) {
+        
+        var elem = document.getElementById("scoreA");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+        return 1;
+    } else {
+        var elem = document.getElementById("scoreA");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        return 0;
     }
 }

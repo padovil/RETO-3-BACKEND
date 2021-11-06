@@ -21,12 +21,10 @@
 </head>
 
 <body>
-  <header id="cabeceralogoR">
-    <div>
-      <!-- <h1>Mensajes </h1> -->
-    </div>
+  <header id="cabeceralogo"  >
+    <img src="img/costumeStore.png" alt="" id="headerLogo"> 
   </header>
-  <nav id="menuprincipalR">
+  <nav id="menuprincipal">
     <div>
       <ul>
         <li><a href="index.html">Principal</a></li>
@@ -47,7 +45,7 @@
   </script>
 
   <!-- <label>MENSSAGE:</label>
-  <input type="text" id="messagetext" placeholder="mensaje" onblur="validadMessage()" />
+  <input type="text" id="messagetext" placeholder="mensaje" onblur="validadMensajeCrear()" />
   <input id="alertMessage" class="alerts" readonly /><br /> -->
 
   <!-- <select id="select-client"></select> -->
@@ -106,7 +104,7 @@
                       <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label>MESSAGE</label>
                         <input type="text" class="form-control" id="message_crear" name="name_crear_costume"
-                          placeholder="Type message" />
+                          placeholder="Type message" onblur="validadMensajeCrear()"/>
                         <small class="form-text text-muted">Digite el mensaje</small>
                       </div>
                       <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
@@ -165,7 +163,7 @@
                       <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label>MESSAGE</label>
                         <input type="text" class="form-control" id="message_update" name="name_crear_costume"
-                          placeholder="Type message" />
+                          placeholder="Type message" onblur="validadMensajeActualizar()"/>
                         <small class="form-text text-muted">Digite el mensaje</small>
                       </div>
                       <!-- <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">

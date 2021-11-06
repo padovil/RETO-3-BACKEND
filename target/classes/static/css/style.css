@@ -1,10 +1,23 @@
+*{
+  box-sizing: border-box;
+  /* overflow: hidden; */
+}
+
+body{max-width:100%;}
+
+#headerLogo{
+  width: 100%;
+  height: auto;
+}
+
 #cabeceralogo {
   /* width: 1245px; */
-  width: 1240px;
+  max-width: 100%;
   height: 150px;
-  padding: 0% 2%;
+  padding: 0%;
   /* background-image: url("img/COSTUME_STORE.png"); */
-  background-image: url("img/costumeStore.png");
+  /* background-image: url("img/costumeStore.png"); */
+  
   align-items: center;
 }
 #cabeceralogo > div {
@@ -16,90 +29,54 @@
   font: bold 54px Arial, sans-serif;
   color: #ffffff;
 }
-
-
-#cabeceralogoR {
-  /* width: 1245px; */
-  width: 1400px;
-  height: 150px;
-  padding: 0% 2%;
-  margin: 10px 20px 0px 20px;
-  /* background-image: url("img/COSTUME_STORE.png"); */
-  background-image: url("img/banner2.png");
-  align-items: center;
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  max-width: 100%;
 }
-#cabeceralogoR > div {
-  width: 1400px;
-  margin: 10px 10px 10px 10px;
-  padding-top: 45px;
-  padding-right: 45px;
-}
-#cabeceralogoR h1 {
-  font: bold 54px Arial, sans-serif;
-  color: #ffffff;
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  width: 100%;
+  padding-right: var(--bs-gutter-x,.75rem);
+  padding-left: var(--bs-gutter-x,.75rem);
+  margin-right: 0;
+  margin-left: 0;
 }
 
 
 #menuprincipal {
-  width: 96%;
-  height: 50px;
+  width: 100%;
+  height: 70px;
   padding: 0% 2%;
+  line-height: 50px; 
   background-color: #004a4d;
-  border-top: 1px solid #004a4d;
-  border-bottom: 1px solid #004a4d;
+  /*border-top: 1px solid #004a4d;
+  border-bottom: 1px solid #004a4d;*/
 }
 #menuprincipal > div {
-  width: 960px;
+  width: 100%;
   margin: 0px auto;
+  height: 70px;
 }
 #menuprincipal li {
   display: inline-block;
-  height: 50px;
+  
   padding: 15px 10px 0px 10px;
-  margin-right: 5px;
+  margin-right: 40px;
+  height: 70px;
 }
 #menuprincipal li:hover {
   background-color: #023133;
   color: black;
-  height: 50px;
+  height: 70px;
+
 }
 
 #menuprincipal a {
   font: bold 18px Arial, sans-serif;
   color: #ffffff;
   text-decoration: none;
+  height: 70px;
 }
 
-
-#menuprincipalR {
-  width: 96%;
-  height: 50px;
-  padding: 0% 2%;
-  background-color: #004a4d;
-  border-top: 1px solid #004a4d;
-  border-bottom: 1px solid #004a4d;
-}
-#menuprincipalR > div {
-  width: 960px;
-  margin: 0px auto;
-}
-#menuprincipalR li {
-  display: inline-block;
-  height: 35px;
-  padding: 0px 10px 0px 10px;
-  margin-right: 5px;
-}
-#menuprincipalR li:hover {
-  background-color: #023133;
-  color: black;
-  height: 35px;
-}
-
-#menuprincipalR a {
-  font: bold 18px Arial, sans-serif;
-  color: #ffffff;
-  text-decoration: none;
-}
 
 
 main {
@@ -208,7 +185,8 @@ figure img {
 
 
 .alerts{
-  border: 0px solid red;
-  width: 300px;
-  color: crimson;
+  border-color: rgb(255, 144, 0);
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgba(255,144,0,0.6);
 }
+
+

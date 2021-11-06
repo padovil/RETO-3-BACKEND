@@ -22,12 +22,10 @@
 </head>
 
 <body>
-  <header id="cabeceralogoR">
-    <div>
-      <!-- <h1>Categorias</h1> -->
-    </div>
+  <header id="cabeceralogo"  >
+    <img src="img/costumeStore.png" alt="" id="headerLogo"> 
   </header>
-  <nav id="menuprincipalR">
+  <nav id="menuprincipal" style="margin: 0px 0px 0px 0px;">
     <div>
       <ul>
         <li><a href="index.html">Principal</a></li>
@@ -103,14 +101,14 @@
                       <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label>NAME</label>
                         <input type="text" class="form-control" id="name_category_crear" name="name_crear_costume"
-                          placeholder="Type name" />
+                          placeholder="Type name" onblur="validadNameCrear()"/>
                         <small class="form-text text-muted">Digite el nombre de la categoria</small>
                       </div>
 
                       <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label>DESCRIPTION</label>
                         <input type="text" class="form-control" id="des_category_crear" name="name_crear_costume"
-                          placeholder="Type category" />
+                          placeholder="Type category" onblur="validadDescriptionCrear()"/>
                         <small class="form-text text-muted">Digite la descripcion</small>
                       </div>
 
@@ -161,14 +159,14 @@
                       <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label>NAME</label>
                         <input type="text" class="form-control" id="name_UD_costume" name="name_UD_costume"
-                          placeholder="Type name" />
+                          placeholder="Type name" onblur="validadNameActualizar()"/>
                         <small class="form-text text-muted">Digite el nombre de la categoria</small>
                       </div>
 
                       <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label>DESCRIPTION</label>
                         <input type="text" class="form-control" id="DES_UD_costume" name="DES_UD_costume"
-                          placeholder="Type category" />
+                          placeholder="Type category" onblur="validadDescriptionActualizar()"/>
                         <small class="form-text text-muted">Digite la descripcion</small>
                       </div>
 

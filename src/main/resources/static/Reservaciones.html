@@ -20,12 +20,10 @@
 </head>
 
 <body>
-    <header id="cabeceralogoR">
-        <div>
-            <!-- <h1>Reservaciones </h1> -->
-        </div>
+    <header id="cabeceralogo">
+        <img src="img/costumeStore.png" alt="" id="headerLogo">
     </header>
-    <nav id="menuprincipalR">
+    <nav id="menuprincipal">
         <div>
             <ul>
                 <li><a href="index.html">Principal</a></li>
@@ -43,7 +41,7 @@
     <script type="text/javascript">
         window.onload = autoInicioReservacion();
     </script>
-    
+
     <script type="text/javascript">
         window.onload = autoInicioRelacionCliente();
     </script>
@@ -109,7 +107,7 @@
                                                 <label>DEVOLUTION DATE</label>
                                                 <input type="date" class="form-control" id="devolutionDate"
                                                     name="brand_crear_costume" placeholder="Type devolution day">
-                                                <small class="form-text text-muted">Digite la fehca de fin de la
+                                                <small class="form-text text-muted">Digite la fecha de fin de la
                                                     reserva</small>
                                             </div>
                                             <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
@@ -122,6 +120,13 @@
                                                     reserva</small>
                                             </div>
                                             <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                                                <label>SCORE</label>
+                                                <input type="number" class="form-control" id="scoreC"
+                                                    name="name_crear_costume" placeholder="Type score"
+                                                    onblur="validadScoreCrear()" />
+                                                <small class="form-text text-muted">Escoge la calificacion</small>
+                                            </div>
+                                            <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
 
                                                 <label>CLIENTE:</label>
                                                 <select id="select-client-r" class="form-control"></select>
@@ -130,7 +135,7 @@
                                             <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
                                                 <label>COSTUME</label>
                                                 <select id="select-costume-r" class="form-control"></select>
-                                                    <small class="form-text text-muted">Escoge el disfraz</small>
+                                                <small class="form-text text-muted">Escoge el disfraz</small>
                                             </div>
                                         </div>
                                     </div>
@@ -187,6 +192,13 @@
                                                     reserva</small>
                                             </div>
                                             <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
+                                                <label>SCORE</label>
+                                                <input type="number" class="form-control" id="scoreA"
+                                                    name="name_crear_costume" placeholder="Type score"
+                                                    onblur="validadScoreA()" />
+                                                <small class="form-text text-muted">Escoge la calificacion</small>
+                                            </div>
+                                            <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
 
                                                 <label>CLIENTE:</label>
                                                 <select id="select-client-update" class="form-control"></select>
@@ -195,14 +207,15 @@
                                             <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6	col-xl-6">
                                                 <label>COSTUME</label>
                                                 <select id="select-costume-update" class="form-control"></select>
-                                                    <small class="form-text text-muted">Escoge el disfraz</small>
+                                                <small class="form-text text-muted">Escoge el disfraz</small>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
-                                        <button type="button" onclick="actualizarReservation()" class="btn btn-success">Update
+                                        <button type="button" onclick="actualizarReservation()"
+                                            class="btn btn-success">Update
                                             Costume</button>
                                     </div>
                                 </div>

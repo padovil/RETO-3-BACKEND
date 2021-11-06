@@ -1,7 +1,6 @@
 /////////Tabla Cliente////////////////////////////
-
-var flagEmail = 0, flagName = 0, flagAge = 0, flagPassword = 0;
 var idUpdate;
+var passwordA = 0, passwordC = 0, ageA =0, ageC=0, emailA=0, emailC=0, nameA=0,nameC=0;
 
 function autoInicioCliente() {
     console.log("se esta ejecutando")
@@ -76,8 +75,8 @@ function pintarRespuesta2(respuesta) {
             
 
 
-            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarClientId(" + respuesta[i].idClient + ")'> Detalle</button></td>";
-            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarCliente(" + respuesta[i].idClient + ")'>Delete</button></td>";
+            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarClientId(" + respuesta[i].idClient + ")'> <img src='https://image.flaticon.com/icons/png/512/104/104668.png' width='20' height='20'> </button></td>";
+            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarCliente(" + respuesta[i].idClient + ")'><img src='https://cdn.icon-icons.com/icons2/868/PNG/128/trash_bin_icon-icons.com_67981.png' width='20' height='20'></button></td>";
             myTable += "</tr></tbody>";
         }
     }
@@ -88,15 +87,10 @@ function pintarRespuesta2(respuesta) {
 
 function guardarInformacionCliente() {
 
-    // if ($("#Clemail").val().length == 0 || $("#Clpassword").val().length == 0 || $("#Clname").val().length == 0 || $("#Clage").val().length == 0) {
-
-    //     alert("Todos los campos son obligatorios");
-    // }
-
-    // else if (!flagEmail || !flagName || !flagAge || !flagPassword) {
-    //     alert("Verifique los campos")
-    // }
-    // else {
+    if (!passwordC || !ageC || !emailC || !nameC) {
+         alert("Verifique los campos")
+    }
+     else {
         let var2 = {
 
             email: $("#email_crear_client").val(),
@@ -131,20 +125,15 @@ function guardarInformacionCliente() {
 
             }
         });
-    // }
+     }
 }
 
 function actualizarInformacionCliente() {
 
-    // if ($("#Clemail").val().length == 0 || $("#Clpassword").val().length == 0 || $("#Clname").val().length == 0 || $("#Clage").val().length == 0) {
-
-    //     alert("Todos los campos son obligatorios");
-    // }
-
-    // else if (!flagEmail || !flagName || !flagAge || !flagPassword) {
-    //     alert("Verifique los campos")
-    // }
-    // else {
+    if (!passwordA || !ageA || !emailA || !nameA) {
+        alert("Verifique los campos")
+   }
+     else {
         let myData = {
             idClient: idUpdate,
             email: $("#email_update_client").val(),
@@ -169,9 +158,10 @@ function actualizarInformacionCliente() {
                 
                 autoInicioCliente();
                 alert("se ha Actualizado correctamente Cliente")
+                window.location.reload()
             }
         });
-    // }
+     }
 }
 
 function borrarCliente(idElemento) {
@@ -196,55 +186,211 @@ function borrarCliente(idElemento) {
 }
 
 
-function validadName() {
-    // var name = $("#Clname").val();
-
-    // if (name.length <= 250) {
-    //     flagName = 1;
-    //     $("#alertNameCl").val("");
-    // } else {
-    //     $("#alertNameCl").val("Has superado el limite de caracteres");
-
-    //     flagName = 0;
-    // }
-}
-
-function validadEmail() {
-    // var email = $("#Clemail").val();
-
-    // if (/^@/.test(email) && (/^.com/.test(email) || /^.edu/.test(email))) {
-    //     flagEmail = 1;
-    //     $("#alertEmail").val("");
-    // } else {
-    //     $("#alertEmail").val("Digita un correo válido");
-    //     flagEmail = 0;
-    // }
-}
-
-
-function validadAge() {
-    var age = $("#Clage").val();
-
-    if (age > 1 && age < 100) {
-        flagAge = 1;
-        $("#alertAge").val("");
+function validadEmailC() {
+    var aux = $("#email_crear_client").val();
+    console.log((aux.match(/[@]/) && (aux.match(/.com/) || /.edu/.test(aux))))
+    if(aux.length == 0 ){
+        var elem = document.getElementById("email_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        emailC = 0;
+    }
+    else if ((aux.match(/[@]/) && (aux.match(/.com/) || /.edu/.test(aux)))) {
+        emailC = 1;
+        var elem = document.getElementById("email_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
     } else {
-        $("#alertAge").val("Digita una edad válida");
-        flagAge = 0;
+        var elem = document.getElementById("email_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        emailC = 0;
     }
 }
 
-function validadPassword() {
-    var password = $("#Clpassword").val();
-
-    if (password.length <= 45) {
-        flagPassword = 1;
-        $("#alertPassword").val("");
+function validadEmailA() {
+    var aux = $("#email_update_client").val();
+    console.log(aux.length)
+    if(aux.length == 0  ){
+        var elem = document.getElementById("email_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        emailA = 0;
+    }
+    else if ((aux.match(/[@]/) && (aux.match(/.com/) || /.edu/.test(aux)))) {
+        emailA = 1;
+        var elem = document.getElementById("email_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
     } else {
-        $("#alertPassword").val("Has superado el limite de caracteres");
-        flagPassword = 0;
+        var elem = document.getElementById("email_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        emailA = 0;
     }
 }
 
 
+function validadAgeC() {
+    var age = $("#age_crear_client").val();
+    console.log(age.length)
+    if((age.length == 0) ){
+        var elem = document.getElementById("age_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        ageC = 0;
+    }
+    else if (age > 1 && age < 100) {
+        ageC = 1;
+        var elem = document.getElementById("age_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("age_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
 
+        ageC = 0;
+    }
+}
+
+function validadAgeA() {
+    var age = $("#age_update_client").val();
+    console.log(age.length)
+    if((age.length == 0) ){
+        var elem = document.getElementById("age_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        ageA = 0;
+    }
+    else if (age > 1 && age < 100) {
+        ageA = 1;
+        var elem = document.getElementById("age_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("age_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        ageA = 0;
+    }
+}
+
+function validadPasswordC() {
+    var name = $("#password_crear_client").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("password_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        passwordC = 0;
+    }
+    else if (name.length <= 45) {
+        passwordC = 1;
+        var elem = document.getElementById("password_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("password_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        passwordC = 0;
+    }
+}
+
+function validadPasswordA() {
+    var aux = $("#password_update_client").val();
+    console.log(aux.length)
+    if((aux.length == 0) ){
+        var elem = document.getElementById("password_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        passwordA = 0;
+    }
+    else if (aux.length <= 45) {
+        passwordA = 1;
+        var elem = document.getElementById("password_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("password_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        passwordA = 0;
+    }
+}
+
+function validadNameC() {
+    var name = $("#name_crear_client").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("name_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        nameC = 0;
+    }
+    else if (name.length <= 250) {
+        nameC = 1;
+        var elem = document.getElementById("name_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("name_crear_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        nameC = 0;
+    }
+}
+
+function validadNameA() {
+    var aux = $("#name_update_client").val();
+    console.log(aux.length)
+    if((aux.length == 0) ){
+        var elem = document.getElementById("name_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+        nameA = 0;
+    }
+    else if (aux.length <= 250) {
+        nameA = 1;
+        var elem = document.getElementById("name_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("name_update_client");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        nameA = 0;
+    }
+}

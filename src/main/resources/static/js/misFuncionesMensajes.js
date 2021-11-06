@@ -1,5 +1,5 @@
 var idUpdate;
-var flagMessage = 0;
+var MensajeC = 0, MensajeA=0;
 
 function autoInicioRelacionCliente() {
 
@@ -105,8 +105,8 @@ function pintarRespuestaMensajes(respuesta) {
             myTable += "<td>" + respuesta[i].client.name + "</td>";
             myTable += "<td>" + respuesta[i].costume.name + "</td>";
 
-            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarMessageid(" + respuesta[i].idMessage + ")'> Detalle</button></td>";
-            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarMensaje(" + respuesta[i].idMessage + ")'>Delete</button></td>";
+            myTable += "<td><button data-toggle='modal' data-target='#modalCostume_Update' class='btn btn-outline-success' onclick='consultarMessageid(" + respuesta[i].idMessage + ")'> <img src='https://image.flaticon.com/icons/png/512/104/104668.png' width='20' height='20'> </button></td>";
+            myTable += "<td><button class='btn btn-outline-danger' onclick='borrarMensaje(" + respuesta[i].idMessage + ")'><img src='https://cdn.icon-icons.com/icons2/868/PNG/128/trash_bin_icon-icons.com_67981.png' width='20' height='20'></button></td>";
             myTable += "</tr></tbody>";
         }
     }
@@ -116,14 +116,10 @@ function pintarRespuestaMensajes(respuesta) {
 }
 
 function guardarInformacionMensajes() {
-    // if ($("#message_crear").val().length == 0) {
-
-    //     alert("Todos los campos son obligatorios");
-    // }
-    // else if (!flagMessage) {
-    //     alert("Verifica los campos");
-    // }
-    // else {
+   if (!MensajeC) {
+        alert("Verifica los campos");
+    }
+    else {
 
 
         let var2 = {
@@ -160,18 +156,14 @@ function guardarInformacionMensajes() {
 
             }
         });
-    // }
+     }
 }
 
 function actualizarInformacionMensaje() {
-    // if ($("#messagetext").val().length == 0) {
-
-    //     alert("Todos los campos son obligatorios");
-    // }
-    // else if (!flagMessage) {
-    //     alert("Verifica los campos");
-    // }
-    // else {
+    if (!MensajeA) {
+        alert("Verifica los campos");
+    }
+    else {
 
         myData       = {
             idMessage          :   idUpdate,
@@ -199,9 +191,10 @@ function actualizarInformacionMensaje() {
 
                 autoInicioMensajes();
                 alert("se ha Actualizado correctamente el Mensaje")
+                window.location.reload()
             }
         });
-    // }
+     }
 }
 
 function borrarMensaje(idElemento) {
@@ -235,14 +228,58 @@ function borrarMensaje(idElemento) {
 
 
 
-function validadMessage() {
-    var message = $("#messagetext").val();
 
-    if (message.length <= 250) {
-        flagMessage = 1;
-        $("#alertMessage").val("");
+
+function validadMensajeCrear() {
+    var name = $("#message_crear").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("message_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        MensajeC = 0;
+    }
+    else if (name.length <= 250) {
+        MensajeC = 1;
+        var elem = document.getElementById("message_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
     } else {
-        $("#alertMessage").val("Has superado el limite de caracteres");
-        flagMessage = 0;
+        var elem = document.getElementById("message_crear");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        MensajeC = 0;
+    }
+}
+
+function validadMensajeActualizar() {
+    var name = $("#message_update").val();
+    console.log(name.length)
+    if((name.length == 0) ){
+        var elem = document.getElementById("message_update");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        MensajeA = 0;
+    }
+    else if (name.length <= 250) {
+        MensajeA = 1;
+        var elem = document.getElementById("message_update");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color:rgb(0, 255, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(0, 255, 0);");
+    } else {
+        var elem = document.getElementById("message_update");
+        elem.setAttribute
+        elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
+        elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
+
+        MensajeA = 0;
     }
 }

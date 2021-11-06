@@ -20,7 +20,7 @@
   <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+  <!-- <script type="text/javascript" src="script.js"></script> -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -29,17 +29,17 @@
   <div class="container unauthenticated">
     <br>
     <h1>Regístrate para poder acceder al contenido</h1> <br><br><br>
-    <h5 style="color:blue;  text-align: center;">Ingresa con GitHub:  </h5> <a  href="/oauth2/authorization/github"> <img src="https://img.icons8.com/color/48/000000/github-2.png" style=" display:block; margin:auto; width: 7%; height: 7%;"  /></a>
+    <h5 style="color:blue;  text-align: center;">Ingresa con GitHub: </h5> <a href="/oauth2/authorization/github"> <img
+        src="https://img.icons8.com/color/48/000000/github-2.png"
+        style=" display:block; margin:auto; width: 7%; height: 7%;" /></a>
   </div>
 
 
   <div class="container authenticated" style="display:none">
     Logged in as: <span id="user"></span>
 
-    <header id="cabeceralogo"  >
-      <div>
-        <!-- <h1>COSTUME STORE </h1> -->
-      </div>
+    <header id="cabeceralogo">
+      <img src="img/costumeStore.png" alt="" id="headerLogo">
     </header>
 
     <nav id="menuprincipal">
@@ -55,6 +55,27 @@
         </ul>
       </div>
     </nav>
+    <br><br><br><br>
+    <div style="margin-left: 300px;">
+    <h3> Al momento de realizar algún registro recuerda que:</h3>
+<br><br>
+    <ul style="list-style-image:url(https://img.icons8.com/fluency/48/000000/arrow.png);">
+      <li>
+        <h3> Antes de poder crear un Disfraz debes crear una categoría</h3>
+      </li>
+      <li>
+        <h3> Antes de poder crear un Mensaje debes crear un cliente y un disfraz</h3>
+      </li>
+      <li>
+        <h3> Antes de poder crear una Reservación debes crear un cliente y un disfraz</h3>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+
   </div>
 
 </body>
