@@ -249,7 +249,7 @@ function validadAgeC() {
         elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
         ageC = 0;
     }
-    else if (age > 1 && age < 100) {
+    else if (age > 0 && age < 100) {
         ageC = 1;
         var elem = document.getElementById("age_crear_client");
         elem.setAttribute
@@ -275,7 +275,7 @@ function validadAgeA() {
         elem.setAttribute("style", "box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgb(255,0,0);");
         ageA = 0;
     }
-    else if (age > 1 && age < 100) {
+    else if (age > 0 && age < 100) {
         ageA = 1;
         var elem = document.getElementById("age_update_client");
         elem.setAttribute

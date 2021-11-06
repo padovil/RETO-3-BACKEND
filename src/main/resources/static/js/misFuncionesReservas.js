@@ -188,11 +188,12 @@ function consultarReservasid(idElemento) {
                 var startDate = json.startDate;
                 var devolutionDate = json.devolutionDate;
                 var status = json.status;
+                var score = json.score;
 
                 
                 $("#startDateUpdate").val(startDate);
                 $("#devolutionDateUpdate").val(devolutionDate);
-                // $("#statusUpdate").val(status);
+                 $("#scoreA").val(score);
                 
                 console.log(json)
             },
