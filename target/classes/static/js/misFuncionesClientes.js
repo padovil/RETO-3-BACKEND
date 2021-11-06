@@ -180,6 +180,7 @@ function borrarCliente(idElemento) {
             $("#resultado").empty();
             autoInicioCliente();
             alert("Se ha Eliminado.")
+            window.location.reload()
         }
     });
 

@@ -164,6 +164,7 @@ function borrarReservation(idElemento) {
                 $("#miListaReservation").empty();
 
                 alert("se ha Eliminado Correctamente!")
+                window.location.reload()
             },
 
             error: function (jqXHR, textStatus, errorThrown) {

@@ -168,6 +168,7 @@ function borrarCategoria(idElemento) {
             $("#resultado").empty();
             traerInformacionCategorias();
             alert("Se ha Eliminado.")
+            window.location.reload()
         }
     });
 
