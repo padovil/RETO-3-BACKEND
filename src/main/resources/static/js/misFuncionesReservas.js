@@ -206,10 +206,7 @@ function consultarReservasid(idElemento) {
 //Manejador PUT
 function actualizarReservation() {
     
-    if($("#scoreA").val().length == 0 || $("#startDate").val().length == 0 || $("#devolutionDate").val().length == 0 || $("#status").val().length == 0){
-        alert("Todos los campos son Obligatorios")
-    }
-    else if(!validarFecha()  ){
+    if(!validarFecha()  ){
         alert("Fecha de inicio debe ser menor a fecha final")
     }
     else if(!validadScoreA()){
