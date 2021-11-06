@@ -71,6 +71,7 @@ function agregarReservation() {
             status: $("#status").val(),
             costume:{id: +$("#select-costume-r").val()},
             client:{idClient: +$("#select-client-r").val()},
+            score: $("#scoreC").val(),
             
         }
 
@@ -221,6 +222,7 @@ function actualizarReservation() {
             status: $("#statusUpdate").val(),
             costume:{id: +$("#select-costume-update").val()},
             client:{idClient: +$("#select-client-update").val()},
+            score: $("#scoreA").val(),
         }
 
         let dataToSend = JSON.stringify(elemento);
