@@ -61,7 +61,7 @@ function agregarReservation() {
     else if(!validarFecha()){
         alert("Fecha de inicio debe ser menor a fecha final")
     }
-    else if(!validadScoreA()){
+    else if(!validadScoreCrear()){
         alert("Verifique los campos")
     }
     else{  
@@ -210,7 +210,7 @@ function actualizarReservation() {
     else if(!validarFecha()  ){
         alert("Fecha de inicio debe ser menor a fecha final")
     }
-    else if(!validadScoreCrear()){
+    else if(!validadScoreA()){
         alert("Verifique los campos")
     }
     else{  
