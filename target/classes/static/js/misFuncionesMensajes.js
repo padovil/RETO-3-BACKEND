@@ -1,5 +1,5 @@
 var idUpdate;
-var MensajeC = 0, MensajeA=0;
+var MensajeC = 0, MensajeA=1;
 
 function autoInicioRelacionCliente() {
 

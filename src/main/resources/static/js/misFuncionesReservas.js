@@ -214,6 +214,7 @@ function actualizarReservation() {
         alert("Verifique los campos")
     }
     else{  
+        
         let elemento = {
             idReservation: idUpdate,
             startDate: $("#startDateUpdate").val(),
@@ -223,7 +224,9 @@ function actualizarReservation() {
             client:{idClient: +$("#select-client-update").val()},
             score: $("#scoreA").val(),
         }
-
+        console.log("status")
+        console.log(status)
+        
         let dataToSend = JSON.stringify(elemento);
         console.log("-----------------------")
         console.log(dataToSend)

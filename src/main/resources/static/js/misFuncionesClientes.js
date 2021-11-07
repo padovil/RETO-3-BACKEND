@@ -1,6 +1,6 @@
 /////////Tabla Cliente////////////////////////////
 var idUpdate;
-var passwordA = 0, passwordC = 0, ageA =0, ageC=0, emailA=0, emailC=0, nameA=0,nameC=0;
+var passwordA = 1, passwordC = 0, ageA =1, ageC=0, emailA=1, emailC=0, nameA=1,nameC=0;
 
 function autoInicioCliente() {
     console.log("se esta ejecutando")

@@ -92,13 +92,9 @@ public class ReservationService {
                     g.get().setScore(Reservation.getScore());
                 }
 
-                // if(Reservation.getClient() !=null){
-                //     g.get().setClient(Reservation.getClient());
-                // }
-
-                // if(Reservation.getCostume() !=null){
-                //     g.get().setCostume(Reservation.getCostume());
-                // }
+                if(Reservation.getStatus() !=null){
+                    g.get().setStatus(Reservation.getStatus());
+                }
 
                 ///////score
                 return reservationRepository.save(g.get());

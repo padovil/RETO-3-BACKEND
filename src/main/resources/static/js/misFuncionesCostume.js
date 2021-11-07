@@ -1,4 +1,5 @@
-var flagName = 0, flagbrand = 0, flagYear = 0, flagDescription = 0;
+var nameC=0, brandC=0,yearC=0,descriptionC=0;
+var nameA=1, brandA=1,yearA=1,descriptionA=1;
 var idUpdate;
 var idNameBuscar;
 
@@ -47,7 +48,7 @@ function consultarCostumeid(idElemento) {
             success: function (json) {
 
                 // var category    =   json.category.name;    
-                
+
                 var id = json.id;
                 idUpdate = id;
                 var brand = json.brand;
@@ -72,10 +73,10 @@ function consultarCostumeid(idElemento) {
 
 
 function agregarElementos() {
-    // if ($("#name2").val().length == 0 || $("#brand").val().length == 0 || $("#year").val().length == 0 || $("#description2").val().length == 0) {
-    //     alert("Todos los campos son obligatorios")
-    // }
-    // else {
+    if (!nameC || !brandC || !yearC || !descriptionC) {
+        alert("Verifique los cambios")
+    }
+    else {
         let myData = {
             // id: $("#id_crear_costume").val(),
             name: $("#name_crear_costume").val(),
@@ -83,12 +84,12 @@ function agregarElementos() {
             year: $("#year_crear_costume").val(),
             description: $("#description_crear_costume").val(),
             category: { id: +$("#select-category").val() },
-            
+
         };
 
         let dataToSend = JSON.stringify(myData);
         console.log(myData);
-        
+
         $.ajax(
             {
                 url: 'http://129.151.114.57:8080/api/Costume/save',
@@ -116,7 +117,7 @@ function agregarElementos() {
                 }
             }
         );
-    // }
+    }
 }
 
 function pintarRespuestaSkate(respuesta) {
@@ -146,7 +147,7 @@ function pintarRespuestaSkate(respuesta) {
             myTable += "<td>" + respuesta[i].year + "</td>";
             myTable += "<td>" + respuesta[i].description + "</td>";
 
-            myTable+="<td>" + respuesta[i].category.name + "</td>";
+            myTable += "<td>" + respuesta[i].category.name + "</td>";
 
 
 
@@ -193,46 +194,49 @@ function borrar(idElemento) {
 
 //Manejador PUT
 function actualizar() {
+    if (!nameA || !brandA || !yearA || !descriptionA) {
+        alert("Verifique los cambios")
+    }
+    else {
+        myData = {
+            id: idUpdate,
+            name: $("#name_update_costume").val(),
+            brand: $("#brand_update_costume").val(),
+            year: $("#year_update_costume").val(),
+            description: $("#description_update_costume").val(),
+            category: { id: +$("#select-category-1").val() },
 
-    myData       = {
-        id          :   idUpdate,
-        name        :   $("#name_update_costume").val(),
-        brand       :   $("#brand_update_costume").val(),
-        year        :   $("#year_update_costume").val(),
-        description :   $("#description_update_costume").val(),
-        category    :   { id: +$("#select-category-1").val() },
-        
-    };
-   
-   
-    console.log(myData);
-    let dataToSend = JSON.stringify(myData);
+        };
 
-    $.ajax (
-                {
 
-                    datatype: 'json',
-                    data: dataToSend,
-                    contentType: "application/JSON",
-                    url: "http://129.151.114.57:8080/api/Costume/update",
-                    //url: "http://localhost:8080/api/Skate/update",
-                    type: "PUT",
+        console.log(myData);
+        let dataToSend = JSON.stringify(myData);
 
-                    success      :  function(response){
-                                        console.log(response);
-                                        alert("Se ha actualizado satisfactoriamente");
-                                        autoInicioCostume();
-                                        location.reload(true);
-                                    },
-                    error       :   function(xhr,status){
-                                        console.log( xhr);
-                                        alert("No se Actualizo Correctamente!")
-                                    }
+        $.ajax(
+            {
 
+                datatype: 'json',
+                data: dataToSend,
+                contentType: "application/JSON",
+                url: "http://129.151.114.57:8080/api/Costume/update",
+                //url: "http://localhost:8080/api/Skate/update",
+                type: "PUT",
+
+                success: function (response) {
+                    console.log(response);
+                    alert("Se ha actualizado satisfactoriamente");
+                    autoInicioCostume();
+                    location.reload(true);
+                },
+                error: function (xhr, status) {
+                    console.log(xhr);
+                    alert("No se Actualizo Correctamente!")
                 }
-            );
 
+            }
+        );
 
+    }
 
 }
 
@@ -240,7 +244,7 @@ function actualizar() {
 function validadYearC() {
     var name = $("#year_crear_costume").val();
     console.log(name.length)
-    if((name.length == 0) ){
+    if ((name.length == 0)) {
         var elem = document.getElementById("year_crear_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -266,7 +270,7 @@ function validadYearC() {
 function validadYearA() {
     var name = $("#year_update_costume").val();
     console.log(name.length)
-    if((name.length == 0) ){
+    if ((name.length == 0)) {
         var elem = document.getElementById("year_update_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -292,7 +296,7 @@ function validadYearA() {
 function validadBrandC() {
     var name = $("#brand_crear_costume").val();
     console.log(name.length)
-    if((name.length == 0) ){
+    if ((name.length == 0)) {
         var elem = document.getElementById("brand_crear_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -318,7 +322,7 @@ function validadBrandC() {
 function validadBrandA() {
     var aux = $("#brand_update_costume").val();
     console.log(aux.length)
-    if((aux.length == 0) ){
+    if ((aux.length == 0)) {
         var elem = document.getElementById("brand_update_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -344,7 +348,7 @@ function validadBrandA() {
 function validadNameC() {
     var name = $("#name_crear_costume").val();
     console.log(name.length)
-    if((name.length == 0) ){
+    if ((name.length == 0)) {
         var elem = document.getElementById("name_crear_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -370,7 +374,7 @@ function validadNameC() {
 function validadNameA() {
     var aux = $("#name_update_costume").val();
     console.log(aux.length)
-    if((aux.length == 0) ){
+    if ((aux.length == 0)) {
         var elem = document.getElementById("name_update_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -396,7 +400,7 @@ function validadNameA() {
 function validadDescriptionCrear() {
     var name = $("#description_crear_costume").val();
     console.log(name.length)
-    if((name.length == 0) ){
+    if ((name.length == 0)) {
         var elem = document.getElementById("description_crear_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");
@@ -423,7 +427,7 @@ function validadDescriptionCrear() {
 function validadDescriptionActualizar() {
     var name = $("#description_update_costume").val();
     console.log(name.length)
-    if((name.length == 0) ){
+    if ((name.length == 0)) {
         var elem = document.getElementById("description_update_costume");
         elem.setAttribute
         elem.setAttribute("style", "border-color: rgb(255, 0, 0);");

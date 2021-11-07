@@ -1,4 +1,4 @@
-var nameA=0,descriptionA=0;
+var nameA=1,descriptionA=1;
 var nameC=0,descriptionC=0;
 var idUpdate;
 
