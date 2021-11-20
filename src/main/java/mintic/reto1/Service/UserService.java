@@ -31,12 +31,12 @@ public class UserService {
         if(User.getId()==null){
             return UserRepository.save(User);
         }else{
-            Optional<User> aux = UserRepository.getUser(User.getId());
-            if(aux.isEmpty()){
+           // Optional<User> aux = UserRepository.getUser(User.getId());
+            //if(aux.isEmpty()){
                 return UserRepository.save(User);
-            }else{
-                return User;
-            }
+            //}else{
+              //  return User;
+            //}
         }
     }
 
