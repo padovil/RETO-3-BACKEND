@@ -30,6 +30,26 @@
           "ignoreFailures": true
         }
       ]
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-Reto3Application<reto1>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "mintic.reto1.Reto3Application",
+      "projectName": "reto1",
+      "args": ""
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-Reto1Application<reto1>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "mintic.reto1.Reto1Application",
+      "projectName": "reto1",
+      "args": ""
     }
   ]
 }

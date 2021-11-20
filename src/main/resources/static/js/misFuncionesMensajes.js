@@ -116,6 +116,8 @@ function pintarRespuestaMensajes(respuesta) {
 }
 
 function guardarInformacionMensajes() {
+
+    
    if (!MensajeC) {
         alert("Verifica los campos");
     }

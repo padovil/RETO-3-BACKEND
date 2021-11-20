@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>mintic</groupId>
-	<artifactId>reto3</artifactId>
+	<artifactId>reto1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>reto3</name>
+	<name>reto1</name>
 	<description>Demo project for Spring Boot</description>
 	<!-- <properties>
 		<java.version>11</java.version>
@@ -96,10 +96,10 @@
 			<version>2.3.0</version>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>
