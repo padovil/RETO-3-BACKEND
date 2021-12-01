@@ -1,0 +1,70 @@
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+
+import java.util.List;
+
+import mintic.reto1.Service.UserService;
+import mintic.reto1.Model.User;
+
+/**
+* Clase controladora
+*/
+@RestController
+@RequestMapping("/api/user")
+@CrossOrigin(origins="*", methods = {RequestMethod.GET,RequestMethod.PUT,RequestMethod.POST,RequestMethod.DELETE})//responde peticiones desde cualquier lado
+public class UserController {
+    
+    /**
+    * Inyeccion de dependencias
+    */ 
+    @Autowired
+    private UserService userService;
+
+    /*
+    * Obtencion de todos los registros
+    */
+    @GetMapping("/all")
+    public List<User> getUsers(){
+        return userService.getAll();
+    }
+
+
+    /*
+    * Obtener por email
+    */
+    @GetMapping("/{userEmail}")
+    public boolean getByUserEmail(@PathVariable("userEmail") String email){
+        if(userService.getByEmail(email)== null){
+            return false;
+        }
+        return true;
+    }
+
+    /*
+    * Obtener por correo y contraseña
+    */
+    @GetMapping("/{userEmail}/{userPassword}")
+    public User getByUserEmailAndUserPassword(@PathVariable("userEmail") String email, @PathVariable("userPassword") String password){
+        return userService.getByEmailAndPassword(email,password);
+    }
+
+    /*
+    * Crear nuevo
+    */ 
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)//status 201
+    public User save(@RequestBody User user){ 
+        return userService.save(user);
+    }
+
+    /*
+    * Borrar por IdObject
+    */
+    @DeleteMapping("/{idObject}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)//status 201
+    public String deleteUser(@PathVariable("idObject") int idObject){
+        userService.deleteUser(idObject);
+        return "redirect:/";
+    }
+}

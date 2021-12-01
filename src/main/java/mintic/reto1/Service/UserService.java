@@ -1,95 +1,108 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package mintic.reto1.Service;
 
+import mintic.reto1.Model.User;
+import mintic.reto1.Repository.*;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import mintic.reto1.Model.User;
-import mintic.reto1.Repository.UserRepository;
-
+/**
+ *
+ * @author USUARIO
+ */
 @Service
 public class UserService {
+     @Autowired
+    private UserRepository userRepository;
 
-    @Autowired
-    private UserRepository UserRepository;
-
-    @Transactional (readOnly = true)
-    public List<User> getAll(){
-        return (List <User>) UserRepository.getAll();
+    public List<User> getAll() {
+        return userRepository.getAll();
     }
 
-    @Transactional (readOnly = true)
-    public Optional<User> getUser(int  id){
-        return UserRepository.getUser(id);
+    public Optional<User> getUser(int id) {
+        
+        return userRepository.getUser(id);
     }
 
-    // @Transactional (readOnly = true)
-    public User save(User User){
-        if(User.getId()==null){
-            return UserRepository.save(User);
-        }else{
-            Optional<User> aux = UserRepository.getUser(User.getId());
-            if(aux.isEmpty()){
-                return UserRepository.save(User);
+    public User create(User user) {
+        if (user.getId() == null) {
+            return user;            
+        }else {
+            Optional<User> e = userRepository.getUser(user.getId());
+            if (e.isEmpty()) {
+                if (emailExists(user.getEmail())==false){
+                    return userRepository.create(user);
+                }else{
+                    return user;
+                }
             }else{
-                return User;
+                return user;
+            }           
+        }
+    }
+
+    public User update(User user) {
+
+        if (user.getId() != null) {
+            Optional<User> userDb = userRepository.getUser(user.getId());
+            if (!userDb.isEmpty()) {
+                if (user.getIdentification() != null) {
+                    userDb.get().setIdentification(user.getIdentification());
+                }
+                if (user.getName() != null) {
+                    userDb.get().setName(user.getName());
+                }
+                if (user.getAddress() != null) {
+                    userDb.get().setAddress(user.getAddress());
+                }
+                if (user.getCellPhone() != null) {
+                    userDb.get().setCellPhone(user.getCellPhone());
+                }
+                if (user.getEmail() != null) {
+                    userDb.get().setEmail(user.getEmail());
+                }
+                if (user.getPassword() != null) {
+                    userDb.get().setPassword(user.getPassword());
+                }
+                if (user.getZone() != null) {
+                    userDb.get().setZone(user.getZone());
+                }
+                
+                userRepository.update(userDb.get());
+                return userDb.get();
+            } else {
+                return user;
             }
+        } else {
+            return user;
         }
     }
-
-    // public User update(User User){
-    //     if(User.getId()!=null){
-    //         Optional<User>g=UserRepository.getUser(User.getId());
-
-    //         if(!g.isEmpty()){
-    //             if(User.getUserEmail()!=null){
-    //                 g.get().setUserEmail(User.getUserEmail());                    
-    //             }
-
-    //             if(User.getUserPassword()!=null){
-    //                 g.get().setUserPassword(User.getUserPassword());
-    //             }
-
-    //             if(User.getUserName() !=null){
-    //                 g.get().setUserName(User.getUserName());
-    //             }
-          
-    //             return UserRepository.save(g.get());
-    //         }
-    //     }
-    //     return User;
-    // }
-
-    @Transactional 
-    public void deleteUser(int id){
-        UserRepository.delete(id);
+    
+    public boolean delete(int userId) {
+        Boolean aBoolean = getUser(userId).map(user -> {
+            userRepository.delete(user);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+    
+    public boolean emailExists(String email) {
+        return userRepository.emailExists(email);
     }
 
+    public User authenticateUser(String email, String password) {
+        Optional<User> usuario = userRepository.authenticateUser(email, password);
 
-    @Transactional (readOnly = true)
-    public User getByEmail(String  userEmail){        
-        // if(UserRepository.getByUserEmail(userEmail)==null){
-        //     return false;
-        // }
-        // return true;  
-        return UserRepository.getByEmail(userEmail)      ;
-    }
-
-    public User getByEmailAndPassword(String email,String password){
-        User g=UserRepository.getByEmailAndPassword(email,password);
-        User user = new User();
-        
-        if(g==null){            
-            user.setName("NO DEFINIDO");
-            user.setPassword(password);
-            user.setEmail(email);  
-            return user;         
+        if (usuario.isEmpty()) {
+            return new User();
+        } else {
+            return usuario.get();
         }
-        return g;
-        
-           
     }
+    
 }

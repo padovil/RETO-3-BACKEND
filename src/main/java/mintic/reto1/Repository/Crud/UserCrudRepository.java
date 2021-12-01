@@ -1,20 +1,18 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
 package mintic.reto1.Repository.Crud;
 
-
-import java.util.Optional;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
 import mintic.reto1.Model.User;
+import java.util.Optional;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-
-public interface UserCrudRepository extends CrudRepository<User,Integer>{
-    public User findByEmail(String email);
-
-    @Query("select u from User u where u.email = :email and u.password = :password")
-    User findNameByEmailAndPassword(@Param("email") String email,
-                                   @Param("password") String password);
+/**
+ *
+ * @author USUARIO
+ */
+public interface UserCrudRepository extends MongoRepository<User, Integer> {
+     Optional<User> findByEmail(String email);
+    Optional<User> findByEmailAndPassword(String email,String password);
 }
-

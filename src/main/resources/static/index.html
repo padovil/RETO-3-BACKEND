@@ -1,98 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="es"> 
 
 <head>
-  <title>Costume Store</title>
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
-      border-collapse: collapse;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Demo</title>
-  <meta name="viewport" content="width=device-width" />
-  <base href="/" />
-  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-  <!-- <script type="text/javascript" src="script.js"></script> -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Login Page</title>
+    <!--Made with love by Mutiullah Samim -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <br>
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-body">
+                    <form id="frmlogin" class="was-validated" >
 
-  <div class="container unauthenticated">
-    <br>
-    <h1>Regístrate para poder acceder al contenido</h1> <br><br><br>
-    <h5 style="color:blue;  text-align: center;">Ingresa con GitHub: </h5> <a href="/oauth2/authorization/github"> <img
-        src="https://img.icons8.com/color/48/000000/github-2.png"
-        style=" display:block; margin:auto; width: 7%; height: 7%;" /></a>
-  </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="username" aria-describedby="emailHelp"
+                                id="email" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" id="pass" placeholder="password" required>
+                        </div>
+                        <br>
+                        <div class="d-none text-center text-danger" id="bad-request">
+                            <p>
+                                La combinacion de correo electronico/contraseña que has introducido es incorrecta.
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+
+                <hr style="border-color:  #FFC312; border-width: 3px; opacity: 50%; ">
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        <h5>
+                            Don't have an account?
+                            <a href="SingUp.html" class="text-warning">
+                                Sign Up
+                            </a>
+                            <br>
+                        </h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-  <div class="container authenticated" style="display:none">
-    Logged in as: <span id="user"></span>
-
-    <header id="cabeceralogo">
-      <img src="img/costumeStore.png" alt="" id="headerLogo">
-    </header>
-
-    <nav id="menuprincipal">
-      <div>
-        <ul>
-          <li><a href="index.html">Principal</a></li>
-          <li><a href="Categorias.html">Categorias</a></li>
-          <li><a href="Clientes.html">Clientes</a></li>
-          <li><a href="Costume.html">Costumes</a></li>
-          <li><a href="Mensajes.html">Mensajes</a></li>
-          <li><a href="Reservaciones.html">Reservaciones</a></li>
-          <li><a href="Reportes.html">Reportes</a></li>
-          
-        </ul>
-      </div>
-    </nav>
-    <br><br><br><br>
-    <div style="margin-left: 100px;">
-    <h3> Al momento de realizar algún registro recuerda que:</h3>
-<br><br>
-    <ul style="list-style-image:url(https://img.icons8.com/fluency/48/000000/arrow.png);">
-      <li>
-        <h3> Antes de poder crear un Disfraz debes crear una categoría</h3>
-      </li>
-      <li>
-        <h3> Antes de poder crear un Mensaje debes crear un cliente y un disfraz</h3>
-      </li>
-      <li>
-        <h3> Antes de poder crear una Reservación debes crear un cliente y un disfraz</h3>
-      </li>
-
-    </ul>
-  </div>
-
-<br><br><br><br>
-
-
-  </div>
-
+    
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <script src="js/index.js"></script>
 </body>
-
-<footer id="footer">
-<hr>
-<p style="font-size: 14px; ">Copyrigh 2021</p>
-
-</footer>
-
-<script type="text/javascript">
-  $.get("/user", function (data) {
-    $("#user").html(data.name);
-    $(".unauthenticated").hide()
-    $(".authenticated").show()
-  });
-</script>
 
 </html>

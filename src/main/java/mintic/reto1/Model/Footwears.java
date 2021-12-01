@@ -4,19 +4,18 @@ package mintic.reto1.Model;
 // import javax.persistence.Entity;
 // import javax.persistence.GeneratedValue;
 // import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import org.springframework.data.annotation.Id;
 // import javax.persistence.Table;
 
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+// import org.springframework.data.mongodb.core.mapping.Field;
 // import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.*;
 // import lombok.Setter;
 
 // import java.io.Serializable;
-
-
 
 @Data
 @AllArgsConstructor
@@ -25,24 +24,19 @@ import lombok.*;
 
 // @Entity
 // @Table(name="user")
-@Document (collection = "usuarios")
-public class User {
-
-    @Transient
-    public
-    static final String SEQUENCE_NAME="user_sequence";
-
-    
+@Document(collection = "footwears")
+public class Footwears  {
     @Id
-    private Integer id;
-    
-    private String identification;
-    private String name;
-    private String address;
-    private String cellPhone;
-    private String email;
-    private String password;
-    private String zone;
-    private String type;
-            
+    private String reference;
+
+    private String brand;
+    private String category;
+    private String material;
+    private String gender;
+    private String size;
+    private String description;
+    private boolean availability = true;
+    private double price;
+    private int quantity;
+    private String photography;
 }
