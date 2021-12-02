@@ -35,7 +35,7 @@ public class FootwearsService {
 
         if (Footwears.getReference() != null) {
             Optional<Footwears> FootwearsDb = FootwearsRepository.getFootwears(Footwears.getReference());
-            if (!FootwearsDb.isEmpty()) {
+            if (FootwearsDb.isPresent()) {
                 
                 if (Footwears.getBrand()!= null) {
                     FootwearsDb.get().setBrand(Footwears.getBrand());

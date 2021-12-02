@@ -4,12 +4,14 @@
  */
 package mintic.reto1.Service;
 
-import mintic.reto1.Model.User;
-import mintic.reto1.Repository.*;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import mintic.reto1.Model.User;
+import mintic.reto1.Repository.UserRepository;
 
 /**
  *
@@ -17,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
-     @Autowired
+    @Autowired
     private UserRepository userRepository;
 
     public List<User> getAll() {
@@ -25,24 +27,39 @@ public class UserService {
     }
 
     public Optional<User> getUser(int id) {
-        
+
         return userRepository.getUser(id);
     }
 
     public User create(User user) {
         if (user.getId() == null) {
-            return user;            
-        }else {
+            return user;
+        } else {
             Optional<User> e = userRepository.getUser(user.getId());
-            if (e.isEmpty()) {
-                if (emailExists(user.getEmail())==false){
+            if (!e.isPresent()) {
+                if (emailExists(user.getEmail()) == false) {
                     return userRepository.create(user);
-                }else{
+                } else {
                     return user;
                 }
-            }else{
+            } else {
                 return user;
-            }           
+            }
+        }
+    }
+
+    // @Transactional (readOnly = true)
+    public User save(User User) {
+        if (User.getId() == null) {
+            return UserRepository.save(User);
+        } else {
+            // Optional<User> aux = UserRepository.getUser(User.getId());
+            // if(aux.isEmpty()){
+            return UserRepository.save(User);
+            // }else{
+            // return User;
+            // }
+
         }
     }
 
@@ -50,7 +67,7 @@ public class UserService {
 
         if (user.getId() != null) {
             Optional<User> userDb = userRepository.getUser(user.getId());
-            if (!userDb.isEmpty()) {
+            if (userDb.isPresent()) {
                 if (user.getIdentification() != null) {
                     userDb.get().setIdentification(user.getIdentification());
                 }
@@ -72,7 +89,7 @@ public class UserService {
                 if (user.getZone() != null) {
                     userDb.get().setZone(user.getZone());
                 }
-                
+
                 userRepository.update(userDb.get());
                 return userDb.get();
             } else {
@@ -82,7 +99,7 @@ public class UserService {
             return user;
         }
     }
-    
+
     public boolean delete(int userId) {
         Boolean aBoolean = getUser(userId).map(user -> {
             userRepository.delete(user);
@@ -90,7 +107,7 @@ public class UserService {
         }).orElse(false);
         return aBoolean;
     }
-    
+
     public boolean emailExists(String email) {
         return userRepository.emailExists(email);
     }
@@ -98,11 +115,11 @@ public class UserService {
     public User authenticateUser(String email, String password) {
         Optional<User> usuario = userRepository.authenticateUser(email, password);
 
-        if (usuario.isEmpty()) {
+        if (!usuario.isPresent()) {
             return new User();
         } else {
             return usuario.get();
         }
     }
-    
+
 }

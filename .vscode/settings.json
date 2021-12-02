@@ -17,5 +17,14 @@
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
   "java.configuration.updateBuildConfiguration": "automatic",
-  "liveServer.settings.port": 5502
+  "liveServer.settings.port": 5502,
+
+  // para autoformatear
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+
 }

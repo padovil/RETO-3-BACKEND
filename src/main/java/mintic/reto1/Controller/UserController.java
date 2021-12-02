@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mintic.reto1.Controller;
-import mintic.reto1.Service.SequenceGeneratorService;
+// import mintic.reto1.Service.SequenceGeneratorService;
 import mintic.reto1.Service.UserService;
 import mintic.reto1.Model.User;
 import java.util.List;
@@ -39,12 +39,12 @@ public class UserController {
     }
     
 
-    @Autowired
-    private SequenceGeneratorService service;
+    // @Autowired
+    // private SequenceGeneratorService service;
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody User user) {
-        user.setId(service.getSequenceNumber(User.SEQUENCE_NAME));
+        // user.setId(service.getSequenceNumber(User.SEQUENCE_NAME));
         return userService.create(user);
     }
     
